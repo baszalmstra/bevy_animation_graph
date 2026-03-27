@@ -2,7 +2,9 @@ use bevy::app::{App, Plugin};
 
 use crate::{
     blend_node::BlendNode,
+    blend_space_1d_node::BlendSpace1DNode,
     blend_space_node::BlendSpaceNode,
+    bool::{and_bool::AndBool, const_bool::ConstBool, not_bool::NotBool, or_bool::OrBool},
     chain_node::ChainNode,
     clip_node::ClipNode,
     dummy_node::DummyNode,
@@ -27,6 +29,7 @@ use crate::{
 };
 
 pub mod blend_node;
+pub mod blend_space_1d_node;
 pub mod blend_space_node;
 pub mod bool;
 pub mod chain_node;
@@ -65,6 +68,7 @@ impl BuiltinNodesPlugin {
             .register_type::<DummyNode>()
             .register_type::<ChainNode>()
             .register_type::<BlendNode>()
+            .register_type::<BlendSpace1DNode>()
             .register_type::<BlendSpaceNode>()
             .register_type::<FlipLRNode>()
             .register_type::<ReplicateTimeNode>()
@@ -75,6 +79,11 @@ impl BuiltinNodesPlugin {
             .register_type::<SpeedNode>()
             .register_type::<FsmNode>()
             .register_type::<TwoBoneIKNode>()
+            // bool
+            .register_type::<AndBool>()
+            .register_type::<ConstBool>()
+            .register_type::<NotBool>()
+            .register_type::<OrBool>()
             // f32
             .register_type::<AbsF32>()
             .register_type::<AddF32>()
